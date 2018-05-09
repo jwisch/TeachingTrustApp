@@ -110,7 +110,7 @@ colnames(Proportion_Ready)<-c("Campus", "Type", "AfAm", "All", "AmIn", "AtRisk",
                                     "Female", "Hisp", "Male", "PacIs", "Sped", "Biracial", "White")
 
 #Breaking the dataframes out by school type
-#Type 4 is S, Type 3 is M, Type 2 is B, and Type 1 is E
+#E - elementary, M  - middle, S - secondary
 df.approaching_num_e <- subset(df.approaching_num, Type == "E")
 df.approaching_den_e <- subset(df.approaching_den, Type == "E")
 df.approaching_num_m <- subset(df.approaching_num, Type == "M")
@@ -132,7 +132,8 @@ Proportion_Approaching_byType<-(c(sum(df.approaching_num_e$All)/sum(df.approachi
 Proportion_Ready_byType<-(c(sum(df.ready_num_e$All)/sum(df.ready_den_e$All), 
                             sum(df.ready_num_m$All)/sum(df.ready_den_m$All),
                             sum(df.ready_num_s$All)/sum(df.ready_den_s$All)))
-                          
+
+#organizing the summary data into tidy form so that I can use it for plotting               
 plotting<-matrix(nrow = 6,  ncol = 3)
 plotting[,1]<- rbind(Proportion_Approaching_byType[1], Proportion_Approaching_byType[2], Proportion_Approaching_byType[3],
       Proportion_Ready_byType[1], Proportion_Ready_byType[2], Proportion_Ready_byType[3])
